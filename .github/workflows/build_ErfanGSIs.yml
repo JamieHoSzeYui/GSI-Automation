@@ -14,9 +14,9 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://mirrors.lolinet.com/firmware/lenovo/l79031/L79031_ROW_SECURE_USER_Q00094.1a_Q_ROW_12.0.073_ST_200702_qpst.zip
-  ROM_NAME: ZenUI
-  ZIP_NAME: ZenUI
+  ROM_URL: http://tdrive.manofuranium.workers.dev/JOYUI11-AB-10-20200418-GSI-ByLZY.zip
+  ROM_NAME: MIUI:JoyUI
+  ZIP_NAME: FuckMyLifeJoyUI
   TZ: Asia/Kolkata
   MIR: wet
 jobs:
@@ -43,7 +43,12 @@ jobs:
               sudo bash setup.sh
        
        - name: Download Stock Rom & Generate GSI
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+         run: |
+              cd ErfanGSIs
+              aria2c -x16 $ROM_URL
+              unzip -r *.zip
+              rm -rf *.zip
+              sudo ./url2GSI.sh *.img $ROM_NAME
        
        - name: Zip Aonly and upload 
          run: |
