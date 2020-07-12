@@ -46,7 +46,7 @@ jobs:
          run: |
               cd ErfanGSIs
               aria2c $ROM_URL
-              unzip -r *.zip
+              unzip *.zip -d .
               rm -rf *.zip
               sudo ./url2GSI.sh *.img $ROM_NAME
        
