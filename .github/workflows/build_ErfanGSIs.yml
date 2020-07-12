@@ -45,7 +45,7 @@ jobs:
        - name: Download Stock Rom & Generate GSI
          run: |
               cd ErfanGSIs
-              aria2c -x16 $ROM_URL
+              aria2c $ROM_URL
               unzip -r *.zip
               rm -rf *.zip
               sudo ./url2GSI.sh *.img $ROM_NAME
