@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: http://asia-sysupwsdl.vivoglobal.com/upgrade/official/officialFiles/PD1730F_EX_A_6.10.2-update-full_1579330406.zip
+  ROM_URL: http://tdrive.manofuranium.workers.dev/OxygenOS_OB15OP7.zip
   ROM_NAME: FuntouchOS
   ZIP_NAME: FuckMyLifeJoyUI
   TZ: Asia/Kolkata
@@ -50,11 +50,10 @@ jobs:
               sudo ./zip2img.sh fw.zip
               mkdir system
               sudo mount cache/system.img system
-              cd system
-              cd system
-              cd app &&ls &&cd ..
-              cd priv-app &&ls &&cd ..
-              ls
+              sudo zip -r system.7z cache
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer $MIR system.7z  
+              
        
        - name: Zip Aonly and upload 
          run: |
