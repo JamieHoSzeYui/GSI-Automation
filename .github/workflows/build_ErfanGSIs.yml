@@ -50,13 +50,8 @@ jobs:
               sudo ./zip2img.sh fw.zip
               mkdir system
               sudo mount cache/system.img system
-              cd system/app &&ls
-              cd ..
-              cd priv-app &&ls 
-              cd ..
-              cd system/app &&ls
-              cd ..
-              cd system/priv-app &&ls
+              cd system
+              ls
        
        - name: Zip Aonly and upload 
          run: |
