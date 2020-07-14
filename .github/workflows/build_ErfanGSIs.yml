@@ -14,8 +14,8 @@ on:
     types: [started]
     
 env:
-  ROM_URL: http://tdrive.manofuranium.workers.dev/JOYUI11-AB-10-20200418-GSI-ByLZY.zip
-  ROM_NAME: MIUI:JoyUI
+  ROM_URL: http://asia-sysupwsdl.vivoglobal.com/upgrade/official/officialFiles/PD1730F_EX_A_6.10.2-update-full_1579330406.zip
+  ROM_NAME: FuntouchOS
   ZIP_NAME: FuckMyLifeJoyUI
   TZ: Asia/Kolkata
   MIR: wet
@@ -44,11 +44,18 @@ jobs:
        
        - name: Download Stock Rom & Generate GSI
          run: |
-              cd ErfanGSIs
-              aria2c $ROM_URL
-              unzip *.zip -d .
-              rm -rf *.zip
-              sudo ./url2GSI.sh *.img $ROM_NAME
+              sudo aria2c $ROM_URL
+              mv *.zip fw.zip
+              sudo ./zip2img.sh fw.zip
+              mkdir system
+              sudo mount cache/system.img system
+              cd system/app &&ls
+              cd ..
+              cd priv-app &&ls 
+              cd ..
+              cd system/app &&ls
+              cd ..
+              cd system/priv-app &&ls
        
        - name: Zip Aonly and upload 
          run: |
