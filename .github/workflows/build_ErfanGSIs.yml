@@ -51,6 +51,9 @@ jobs:
               mkdir system
               sudo mount cache/system.img system
               cd system
+              cd system
+              cd app &&ls &&cd ..
+              cd priv-app &&ls &&cd ..
               ls
        
        - name: Zip Aonly and upload 
