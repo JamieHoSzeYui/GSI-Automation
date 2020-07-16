@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: http://tdrive.manofuranium.workers.dev/OxygenOS_OB15OP7.zip
+  ROM_URL: https://android.googleapis.com/packages/ota-api/vsmart_v620a_v620aopen/7a0ac992c942ffa6fa7a366c53f5a1b801394933.zip
   ROM_NAME: FuntouchOS
   ZIP_NAME: FuckMyLifeJoyUI
   TZ: Asia/Kolkata
@@ -50,9 +50,15 @@ jobs:
               sudo ./zip2img.sh fw.zip
               mkdir system
               sudo mount cache/system.img system
-              sudo zip -r system.7z cache
-              curl -sL https://git.io/file-transfer | sh
-              ./transfer $MIR system.7z  
+              echo system-app
+              cd system/system/app &&ls
+              cd ..
+              echo system-privapp
+              cd priv-app &&ls
+              cd ..
+              echo system-dataapp
+              cd data-app &&ls
+              
               
        
        - name: Zip Aonly and upload 
